@@ -1,14 +1,28 @@
 import React from 'react'
 import axios from 'axios'
 import {
+    Button, Checkbox,
+    FormLabel, FormControl, FormControlLabel,
+    Radio, RadioGroup
+} from '@material-ui/core'
+
+import {
     changeName, changeTag,
     initializeForm
  } from '../actions'
 import './App.css'
+import { FormGroup } from '@material-ui/core'
 
 const SelectOS = ({ store }) => {
     const { osName, osTag } = store.getState().form;
-    // const fileName = osName + "_" + osTag + ".tar";
+
+    const handleChangeOS = e => {
+        store.dispatch(changeName(e.target.value));
+    }
+
+    const handleChangeTag = e => {
+        store.dispatch(changeTag(e.target.value));
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -53,39 +67,41 @@ const SelectOS = ({ store }) => {
     return (
         <div className="App">
             <header className="App-header">
-                <form onSubmit={e => handleSubmit(e)}>
-                    <label>
-                        CentOS
-                        <input
-                            type="radio"
-                            value="centos"
-                            checked={osName === 'centos'}
-                            onChange={() => store.dispatch(changeName("centos"))}>
-                        </input>
-                    </label>
-                    <label>
-                        Ubuntu
-                        <input
-                            type="radio"
-                            value="ubuntu"
-                            checked={osName === 'ubuntu'}
-                            onChange={() => store.dispatch(changeName("ubuntu"))}>
-                        </input>
-                    </label>
-                    <br></br>
-                    <label>
-                        latest
-                        <input
-                            type="radio"
-                            value="latest"
-                            checked={osTag === 'latest'}
-                            onChange={() => store.dispatch(changeTag("latest"))}>
-                        </input>
-                    </label>
-                    <br></br>
-                    <button type="submit">submit</button>
-                </form>
-                <button type="button" onClick={e => handleDownload(e)}>download</button>
+                <FormControl component="fieldset" onSubmit={e => handleSubmit(e)}>
+                    <div className="div_os">
+                        <FormLabel component="legend">OS</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel 
+                                value="centos"
+                                control={<Radio checked={osName === 'centos'} />}
+                                onChange={handleChangeOS}
+                                label="CentOS" />
+                            <FormControlLabel
+                                value="ubuntu"
+                                control={<Radio checked={osName === 'ubuntu'} />}
+                                onChange={handleChangeOS}
+                                label="Ubuntu" />
+                        </RadioGroup>
+                    </div>
+                    <div className="div_tag">
+                        <FormLabel component="legend">TAG</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel
+                                value="latest"
+                                control={<Radio checked={osTag === 'latest'} />}
+                                onChange={handleChangeTag}
+                                label="latest" />
+                        </RadioGroup>
+                        </div>
+                    <div className="div_create">
+                        <Button variant="contained" color="primary" type="submit">create</Button>
+                    </div>
+                </FormControl>
+                <div>
+                    <Button variant="contained" color="default" type="button" onClick={e => handleDownload(e)}>
+                        download
+                    </Button>
+                </div>
             </header>
         </div>
     )
