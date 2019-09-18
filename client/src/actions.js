@@ -1,3 +1,4 @@
+// form action
 export const INITIALIZE_FORM = 'INITIALIZE_FORM'
 export const CHANGE_NAME = 'CHANGE_NAME'
 export const CHANGE_TAG = 'CHANGE_TAG'

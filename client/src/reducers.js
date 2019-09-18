@@ -8,10 +8,6 @@ const initialState = {
         osName: '',
         osTag: 'latest',
     },
-    imgInfo: {
-        isFetching: false,
-        selectedOS: '',
-    },
 }
 
 const formReducer = (state = initialState.form, action) => {
@@ -33,16 +29,8 @@ const formReducer = (state = initialState.form, action) => {
     }
 }
 
-const imgInfoReducer = (state = initialState.imgInfo, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
-
 const rootReducer = combineReducers({
     form: formReducer,
-    imgInfo: imgInfoReducer,
 })
 
 export default rootReducer
