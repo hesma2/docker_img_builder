@@ -23,16 +23,17 @@
   color: #61dafb;
 }
 
-.div_os div{
-  float: left;
+.flex {
+  padding: 2.5% 0;
+  margin: 2px 2px 2px 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.div_tag div{
-  float: left;
-}
-
-.div_create div{
-  clear: both;
+.card {
+  padding: 2.5% 0;
+  margin: 10px 10px 10px 10px;
 }
 
 @keyframes App-logo-spin {

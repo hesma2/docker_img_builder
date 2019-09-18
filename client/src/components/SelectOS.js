@@ -1,17 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 import {
-    Button, Checkbox,
+    Button, Card, CardContent,
     FormLabel, FormControl, FormControlLabel,
-    Radio, RadioGroup
+    Radio, RadioGroup,
+    
 } from '@material-ui/core'
-
 import {
     changeName, changeTag,
     initializeForm
  } from '../actions'
 import './App.css'
-import { FormGroup } from '@material-ui/core'
 
 const SelectOS = ({ store }) => {
     const { osName, osTag } = store.getState().form;
@@ -68,32 +67,38 @@ const SelectOS = ({ store }) => {
         <div className="App">
             <header className="App-header">
                 <FormControl component="fieldset" onSubmit={e => handleSubmit(e)}>
-                    <div className="div_os">
-                        <FormLabel component="legend">OS</FormLabel>
-                        <RadioGroup>
-                            <FormControlLabel 
-                                value="centos"
-                                control={<Radio checked={osName === 'centos'} />}
-                                onChange={handleChangeOS}
-                                label="CentOS" />
-                            <FormControlLabel
-                                value="ubuntu"
-                                control={<Radio checked={osName === 'ubuntu'} />}
-                                onChange={handleChangeOS}
-                                label="Ubuntu" />
-                        </RadioGroup>
+                    <div className="flex">
+                        <Card className="card">
+                            <CardContent>
+                                <FormLabel component="legend">OS</FormLabel>
+                                <RadioGroup>
+                                    <FormControlLabel 
+                                        value="centos"
+                                        control={<Radio checked={osName === 'centos'} />}
+                                        onChange={handleChangeOS}
+                                        label="CentOS" />
+                                    <FormControlLabel
+                                        value="ubuntu"
+                                        control={<Radio checked={osName === 'ubuntu'} />}
+                                        onChange={handleChangeOS}
+                                        label="Ubuntu" />
+                                </RadioGroup>
+                            </CardContent>
+                        </Card>
+                        <Card className="card">
+                            <CardContent>
+                                <FormLabel component="legend">TAG</FormLabel>
+                                <RadioGroup>
+                                    <FormControlLabel
+                                        value="latest"
+                                        control={<Radio checked={osTag === 'latest'} />}
+                                        onChange={handleChangeTag}
+                                        label="latest" />
+                                </RadioGroup>
+                            </CardContent>
+                        </Card>
                     </div>
-                    <div className="div_tag">
-                        <FormLabel component="legend">TAG</FormLabel>
-                        <RadioGroup>
-                            <FormControlLabel
-                                value="latest"
-                                control={<Radio checked={osTag === 'latest'} />}
-                                onChange={handleChangeTag}
-                                label="latest" />
-                        </RadioGroup>
-                        </div>
-                    <div className="div_create">
+                    <div>
                         <Button variant="contained" color="primary" type="submit">create</Button>
                     </div>
                 </FormControl>
