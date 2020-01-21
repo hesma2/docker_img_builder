@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "posts": [
     {
       "id": 1,
@@ -17,3 +18,17 @@
     "name": "typicode"
   }
 }
+=======
+  "img": [
+    {
+      "id": 1,
+      "name": "ubuntu:latest",
+      "status": "deleted",
+      "os": "centos",
+      "tag": "latest",
+      "c_date": "",
+      "d_date": ""
+    }
+  ]
+}
+>>>>>>> 774109c33809719f7cc8016b06520690bd738c69
